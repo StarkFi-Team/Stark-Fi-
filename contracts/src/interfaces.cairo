@@ -13,5 +13,4 @@ mod ICommunityIssuance;
 mod ICollSurplusPool;
 mod IBoldRewardsReceiver;
 mod IAddRemoveManagers;
-mod ITroveEvents;
 
