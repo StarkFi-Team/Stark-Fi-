@@ -1,26 +1,24 @@
-
 use starknet::ContractAddress;
 // ILiquityBase import it
 // DefaultPool  inheretins this interface
-// DeployLiquity2Script,TestDeployer,BaseTest,IAddressesRegistry,IAddressesRegistry,LiquityBase, TroveManager, ActivePool ,AddressesRegistry this interface
+// DeployLiquity2Script,TestDeployer,BaseTest,IAddressesRegistry,IAddressesRegistry,LiquityBase,
+// TroveManager, ActivePool ,AddressesRegistry this interface
 #[starknet::interface]
-trait IDefaultPool <TContractState> {
-
-    fn troveManagerAddress(self: @TContractState)   -> ContractAddress;
+trait IDefaultPool<TContractState> {
+    fn troveManagerAddress(self: @TContractState) -> ContractAddress;
     fn activePoolAddress(self: @TContractState) -> ContractAddress;
     // --- fns ---
-    fn getCollBalance(self: @TContractState)  -> u256;
+    fn getCollBalance(self: @TContractState) -> u256;
     fn getBoldDebt(self: @TContractState) -> u256;
-    fn sendCollToActivePool(ref self:TContractState, _amount: u256) ;
-    fn receiveColl(ref self:TContractState, _amount: u256) ;
+    fn sendCollToActivePool(ref self: TContractState, _amount: u256);
+    fn receiveColl(ref self: TContractState, _amount: u256);
 
-    fn increaseBoldDebt(ref self:TContractState, _amount: u256) ;
-    fn decreaseBoldDebt(ref self:TContractState, _amount: u256) ;
+    fn increaseBoldDebt(ref self: TContractState, _amount: u256);
+    fn decreaseBoldDebt(ref self: TContractState, _amount: u256);
 }
-
 //DeployLiquity2Script is  defines a variable of this type in the struct addressvars
 
-//ActivePool is import and Calling the function receiveColl on an instance of the interface 
+//ActivePool is import and Calling the function receiveColl on an instance of the interface
 // function sendCollToDefaultPool(uint256 _amount) external override {
 //     _requireCallerIsTroveManager();
 
@@ -33,15 +31,18 @@ trait IDefaultPool <TContractState> {
 
 //DefaultPool is import, inheretins and implement it.
 
-// TroveMnager is defines a variable of this interface and send it to functions 
+// TroveMnager is defines a variable of this interface and send it to functions
 
 //LiquityBase is import and  defines a variable of this interface
 
-//  IAddressesRegistry is import, defines a variable in AddressVars struct  and declare function that return this interface
+//  IAddressesRegistry is import, defines a variable in AddressVars struct  and declare function
+//  that return this interface
 // function defaultPool() external view returns (IDefaultPool);
 
 // ILiquityBase  is import it
 
-//BaseTest is import, defines a variable 
+//BaseTest is import, defines a variable
 
 //Deployment defines a variable and deploy the contract
+
+

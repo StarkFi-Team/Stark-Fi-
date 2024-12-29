@@ -19,7 +19,7 @@ pub struct CombinedTroveData {
 
 #[derive(Copy, Clone, Drop)]
 pub struct DebtPerInterestRate {
-    interest_batch_manager: ContractAddress,        
+    interest_batch_manager: ContractAddress,
     interest_rate: u256,
     debt: u256
 }
@@ -28,7 +28,15 @@ pub struct DebtPerInterestRate {
 // #[starknet::interface]
 pub trait IMultiTroveGetter<TContractState> {
     //_startIdx: i256 //
-    fn get_multiple_sorted_troves(self: @TContractState, coll_index: u256, start_id_x: u256, count: u256) -> Array<CombinedTroveData>;
+    fn get_multiple_sorted_troves(
+        self: @TContractState, coll_index: u256, start_id_x: u256, count: u256
+    ) -> Array<CombinedTroveData>;
 
-    fn get_debt_per_interest_rate_ascending(self: @TContractState, coll_index: u256, start_id: u256, max_iterations: u256) -> (Array<DebtPerInterestRate>, u256);
+    fn get_debt_per_interest_rate_ascending(
+        self: @TContractState, coll_index: u256, start_id: u256, max_iterations: u256
+    ) -> (Array<DebtPerInterestRate>, u256);
 }
+//using in this interface in:
+// AddressesRegistry -
+
+
