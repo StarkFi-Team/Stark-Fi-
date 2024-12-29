@@ -32,4 +32,3 @@ pub trait IMultiTroveGetter<TContractState> {
 
     fn get_debt_per_interest_rate_ascending(self: @TContractState, coll_index: u256, start_id: u256, max_iterations: u256) -> (Array<DebtPerInterestRate>, u256);
 }
-
