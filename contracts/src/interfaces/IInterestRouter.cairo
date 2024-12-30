@@ -1,5 +1,5 @@
 #[starknet::interface]
-pub trait IInterestRouter<TContractState> {//
+pub trait IInterestRouter<TContractState> { //
 // Currently the Interest Router doesn’t need any specific function
 }
 //
@@ -21,12 +21,36 @@ pub trait IInterestRouter<TContractState> {//
 // ================================================================================================================================
 // usage
 //
-// * active_pool Contract
+// ------contracts-------
+//
+// * active_pool Contract:
 //   ^ create variable and initialize it in ctor.
-//   ^ _mint_agg_interest function send it as address to mint boldToken.
-// * addresses_registry Contract
+//   ^ _mint_agg_interest function send it as address to mint bold_token.
+//
+// * addresses_registry Contract:
+//   ^ set_addresses() function initalize the variable in AddressVars struct.
+//   ^ emit interest_router_address_changed(address(_vars.interest_router));
+//
+// * MockInterestRouter Contract:
+//   ^ contract is inheriting from the IInterestRouter.
+//   -- mock uses for testing
+//
+// * deploy_liquity_2_script Contract
+//   ^ LiquityContractsTestnet struct - create variable of IInterestRouter type.
+//   ^ DeploymentVarsTestnet struct create a variable call contract of LiquityContractsTestnet type.
+//   ^ (LiquityContractAddresses struct - create interest_router variable of address type).
+//   ^ _deploy_and_connect_collateral_contracts_testnet function: contracts.interestRouter =
+//     IInterestRouter(computeGovernanceAddress(deployer, SALT, _boldToken, new address[](0)));
 //   ^ 
-//   ^
+// ------interfaces-------
+//
+// * IActivePool interface
+//   ^ create function interestRouter() that returns variable of IInterestRouter type.
+//
+// * IAddressesRegistry interface
+//   ^ AddressVars struct - create variable of of IInterestRouter type.
+//   ^ create function interestRouter() that returns variable of IInterestRouter type.
+//
 // ================================================================================================================================
 
 

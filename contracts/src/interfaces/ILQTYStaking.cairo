@@ -5,11 +5,11 @@ use starknet::ContractAddress;
 pub trait ILQTYStaking<TContractState> {
     fn setAddresses(
         ref self: TContractState,
-        _lqty_token_address: ContractAddress,
-        _bold_token_address: ContractAddress,
-        _trove_manager_address: ContractAddress,
-        _borrower_operations_address: ContractAddress,
-        _active_pool_address: ContractAddress
+        lqty_token_address: ContractAddress,
+        bold_token_address: ContractAddress,
+        trove_manager_address: ContractAddress,
+        borrower_operations_address: ContractAddress,
+        active_pool_address: ContractAddress
     );
 
     fn stake(ref self: TContractState, _LQTY_amount: u256);
