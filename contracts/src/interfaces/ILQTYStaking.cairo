@@ -20,14 +20,8 @@ pub trait ILQTYStaking<TContractState> {
 
     fn increase_F_bold(ref self: TContractState, _LQTY_Fee: u256);
 
-<<<<<<< HEAD
-    fn getPendingETHGain(self: @TContractState, _user: ContractAddress) -> u256;
-
-    fn getPendingBoldGain(self: @TContractState, _user: ContractAddress) -> u256;
-=======
     fn get_pending_ETH_gain(self: @TContractState, _user: ContractAddress) -> u256;
 
     fn get_pending_bold_gain(self: @TContractState, _user: ContractAddress) -> u256;
->>>>>>> 705aa9cae9f7cd18045677dc93cef32bd971069e
     // this is the only time that it is used.
 }
