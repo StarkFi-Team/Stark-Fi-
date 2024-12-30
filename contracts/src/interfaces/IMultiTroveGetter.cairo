@@ -7,7 +7,7 @@ pub struct CombinedTroveData {
     debt: u256,
     coll: u256,
     stake: u256,
-    annual_InterestRate: u256,
+    annual_interest_rate: u256,
     last_debt_updat_time: u256,
     last_interest_rate_adj_time: u256,
     interest_batch_manager: ContractAddress,
