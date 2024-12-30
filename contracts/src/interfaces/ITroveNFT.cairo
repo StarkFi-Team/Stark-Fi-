@@ -6,8 +6,8 @@ use openzeppelin::token::erc20::{ERC20Component, ERC20HooksEmptyImpl};
 use ITroveManager;
 #[starknet::interface]
 trait  ITroveNFT<TContractState>{
-    fn mint(ref self: TContractState, _owner: ContractAddress,  _troveId: u256) ;
-    fn burn(ref self: TContractState, _troveId: u256) ;
+    fn mint(ref self: TContractState, owner: ContractAddress,  trove_id: u256) ;
+    fn burn(ref self: TContractState, trove_ud: u256) ;
 }
 
 
@@ -33,3 +33,5 @@ trait  ITroveNFT<TContractState>{
 //Deployment declare in LiquityContractsDev and LiquityContracts struct and in LiquityContractAddresses is declare as address , deploy and initialize
 //addresses.troveNFT = getAddress(
 //address(this), getBytecode(type(TroveNFT).creationCode, address(contracts.addressesRegistry)), SALT
+
+//

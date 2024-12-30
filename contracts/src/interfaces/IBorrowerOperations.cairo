@@ -13,15 +13,15 @@ use IWETH;
 #[derive(Copy, Drop)]
 pub struct OpenTroveAndJoinInterestBatchManagerParams {
     owner: ContractAddress,
-    ownerIndex: u256,
-    collAmount: u256,
-    boldAmount: u256,
-    upperHint: u256,
-    lowerHint: u256,
-    interestBatchManager: ContractAddress,
-    maxUpfrontFee: u256,
-    addManager: ContractAddress,
-    removeManager: ContractAddress,
+    owner_index: u256,
+    coll_amount: u256,
+    bold_amount: u256,
+    upper_hint: u256,
+    lower_hint: u256,
+    interest_batch_manager: ContractAddress,
+    max_upfront_fee: u256,
+    add_manager: ContractAddress,
+    remove_manager: ContractAddress,
     receiver: ContractAddress
 }
 
@@ -29,16 +29,16 @@ pub struct OpenTroveAndJoinInterestBatchManagerParams {
     // -- individual delegation --
     pub struct InterestIndividualDelegate {
         account: ContractAddress,
-        minInterestRate: u128,
-        maxInterestRate: u128,
-        minInterestRateChangePeriod: u256,
+        min_interest_rate: u128,
+        max_interest_rate: u128,
+        min_interest_rate_change_period: u256,
    }
 #[derive(Copy, Drop)]
        // -- batches --
        pub struct InterestBatchManager {
-        minInterestRate: u128,
-        maxInterestRate: u128,
-        minInterestRateChangePeriod: u256
+        min_interest_rate: u128,
+        max_interest_rate: u128,
+        min_interest_rate_change_period: u256
    }
 
 
@@ -49,108 +49,108 @@ trait IBorrowerOperations <TContractState>  {
     fn MCR (self: @TContractState) -> u256;
     fn SCR (self: @TContractState) -> u256;
 
-    fn openTrove(
+    fn open_trove(
          ref self:TContractState,
-         _owner: ContractAddress,
-         _ownerIndex: u256,
-         _ETHAmount: u256,
-         _boldAmount: u256,
-         _upperHint: u256,
-         _lowerHint: u256,
-         _annualInterestRate: u256,
-         _maxUpfrontFee: u256,
-         _addManager: ContractAddress,
-         _removeManager: ContractAddress,
-         _receiver: ContractAddress
+         owner: ContractAddress,
+         owner_index: u256,
+         ETH_amount: u256,
+         bold_amount: u256,
+         upper_hint: u256,
+         lower_hint: u256,
+         annual_interest_rate: u256,
+         max_upfront_fee: u256,
+         add_manager: ContractAddress,
+         remove_manager: ContractAddress,
+         receiver: ContractAddress
     )  -> u256;
 
 
+_
+    fn open_trove_and_join_interest_batch_manager(ref self:TContractState,  params: OpenTroveAndJoinInterestBatchManagerParams) -> u256;//params is calldata
 
-    fn openTroveAndJoinInterestBatchManager(ref self:TContractState, OpenTroveAndJoinInterestBatchManagerParams calldata _params) -> u256;
+    fn add_coll(ref self:TContractState,  trove_id: u256, ETH_amount: u256);
 
-    fn addColl(ref self:TContractState,  _troveId: u256, _ETHAmount: u256);
+    fn withdraw_coll(ref self:TContractState, trove_id: u256,  amount: u256);
 
-    fn withdrawColl(ref self:TContractState, _troveId: u256,  _amount: u256);
+    fn withdraw_bold(ref self:TContractState, trove_id: u256, amount: u256, max_upfront_fee: u256);
 
-    fn withdrawBold(ref self:TContractState, _troveId: u256, _amount: u256, _maxUpfrontFee: u256);
+    fn repay_bold(ref self:TContractState, trove_id: u256,  amount: u256);
 
-    fn repayBold(ref self:TContractState, _troveId: u256,  _amount: u256);
+    fn close_trove(ref self:TContractState, trove_id: u256);
 
-    fn closeTrove(ref self:TContractState, _troveId: u256);
-
-    fn adjustTrove(
-        ref self:TContractState,
-         _troveId: u256,
-         _collChange: u256,
-         _isCollIncrease: u256,
-         _debtChange: u256,
-         isDebtIncrease: bool,
-         _maxUpfrontFee: u256
+    fn adjust_trove(
+         ref self:TContractState,
+         trove_id: u256,
+         coll_change: u256,
+         is_coll_increase: u256,
+         debt_change: u256,
+         is_debt_increase: bool,
+         max_upfront_fee: u256
     );
 
     fn adjustZombieTrove(
          ref self:TContractState,
-         _troveId: u256,
-         _collChange: u256,
-         _isCollIncrease:bool,
-         _boldChange: u256,
-         _isDebtIncrease: bool,
-         _upperHint: u256,
-         _lowerHint: u256,
-         _maxUpfrontFee: u256
+         trove_id: u256,
+         coll_change: u256,
+         is_coll_increase:bool,
+         bold_change: u256,
+         is_debt_increase: bool,
+         upper_int: u256,
+         lower_hint: u256,
+         max_upfront_fee: u256
     );
 
-    fn adjustTroveInterestRate(
+    fn adjust_trove_interest_rate(
          ref self:TContractState,
-         _troveId: u256,
-         _newAnnualInterestRate: u256,
-         _upperHint: u256,
-         _lowerHint: u256,
-         _maxUpfrontFee: u256
+         trove_id: u256,
+         new_annual_interest_rate: u256,
+         upper_hint: u256,
+         lower_hint: u256,
+         max_upfront_fee: u256
     ) ;
 
-    fn applyPendingDebt(ref self:TContractState, _troveId: u256, _lowerHint: u256, _upperHint: u256);
+    fn apply_pending_debt(ref self:TContractState, trove_id: u256, lower_hint: u256, upper_hint: u256);
 
-    fn onLiquidateTrove(ref self:TContractState, _troveId: u256);
+    fn on_liquidate_trove(ref self:TContractState, trove_id: u256);
 
-    fn claimCollateral(ref self:TContractState);
+    fn claim_collateral(ref self:TContractState);
 
-    fn hasBeenShutDown(self:@TContractState) -> bool;
+    fn has_been_shut_down(self:@TContractState) -> bool;
     fn shutdown(ref self:TContractState);
-    fn shutdownFromOracleFailure(ref self:TContractState);
+    fn shutdown_from_oracle_failure(ref self:TContractState);
 
-    fn checkBatchManagerExists(self:@TContractState,  _batchMananger: ContractAddress)  -> bool;
+    fn check_batch_manager_exists(self:@TContractState,  batch_mananger: ContractAddress)  -> bool;
 
 
-    fn getInterestIndividualDelegateOf(self:@TContractState,  _troveId: u256)
+    fn get_interest_individual_delegate_of(self:@TContractState,  trove_id: u256)
     //memory varibale
         -> InterestIndividualDelegate ;
-    fn setInterestIndividualDelegate(
+    fn set_interest_individual_delegate(
          ref self:TContractState,
-         _troveId: u256,
-         _delegate : ContracrAddress,
-         _minInterestRate: u128,
-         _maxInterestRate: u128,
+         trove_id: u256,
+         delegate : ContracrAddress,
+         min_interest_rate: u128,
+         max_interest_rate: u128,
         // only needed if trove was previously in a batch:
-         _newAnnualInterestRate: u256,
-         _upperHint: u256,
-         _lowerHint: u256,
-         _maxUpfrontFee: u256,
-         _minInterestRateChangePeriod: u256
+         new_annual_interest_rate: u256,
+         upper_hint: u256,
+         lower_hint: u256,
+         max_upfront_fee: u256,
+         min_interest_rate_change_period: u256
     );
-    fn removeInterestIndividualDelegate(ref self:TContractState,  _troveId: u256);
+    fn remove_interest_individual_delegate(ref self:TContractState,  trove_id: u256);
 
 
 
-    fn registerBatchManager(
+    fn register_batch_manager(
         ref self:TContractState,
-         minInterestRate: u128,
-         maxInterestRate: u128,
-         currentInterestRate: u128,
+         min_interest_rate: u128,
+         max_interest_rate: u128,
+         current_interest_rate: u128,
          fee: u128,
-         minInterestRateChangePeriod: u128
+         min_interest_rate_change_period: u128
     );
-    fn lowerBatchManagementFee(ref self:TContractState, _newAnnualFee: u256);
+    fn lower_batch_management_fee(ref self:TContractState, new_annual_fee: u256);
     fn setBatchManagerAnnualInterestRate(
         ref self:TContractState,
          _newAnnualInterestRate: u128,
@@ -158,34 +158,34 @@ trait IBorrowerOperations <TContractState>  {
          _lowerHint: u256,
          _maxUpfrontFee: u256
     );
-    fn interestBatchManagerOf(self:@TContractState,  _troveId: u256)-> ContracrAddress;
+    fn interest_batch_manager_of(self:@TContractState,  trove_id: u256)-> ContracrAddress;
     //return memory varibale
-    fn getInterestBatchManager(self:@TContractState,  _account: ContracrAddress) -> InterestBatchManager;
-    fn setInterestBatchManager(
+    fn get_interest_batch_manager(self:@TContractState,  account: ContracrAddress) -> InterestBatchManager;
+    fn set_interest_batch_manager(
         ref self:TContractState,
-         _troveId: u256,
-         _newBatchManager: ContractAddress,
-         _upperHint: u256,
-         _lowerHint: u256,
-         _maxUpfrontFee: u256
+         trove_id: u256,
+         new_batch_manager: ContractAddress,
+         upper_hint: u256,
+         lower_hint: u256,
+         max_upfront_fee: u256
     );
-    fn removeFromBatch(
+    fn remove_from_batch(
         ref self:TContractState,
-         _troveId: u256,
-         _newAnnualInterestRate: u256,
-         _upperHint: u256,
-         _lowerHint: u256,
-         _maxUpfrontFee: u256
+         trove_id: u256,
+         new_annual_interest_rate: u256,
+         upper_hint: u256,
+         lower_hint: u256,
+         max_upfront_fee: u256
     );
     fn switchBatchManager(
         ref self:TContractState,
-         _troveId: u256,
-         _removeUpperHint: u256,
-         _removeLowerHint: u256,
-         _newBatchManager: ContractAddress,
-         _addUpperHint: u256,
-         _addLowerHint: u256,
-         _maxUpfrontFee: u256
+         trove_id: u256,
+         remove_upper_hint: u256,
+         remove_lower_hint: u256,
+         new_batch_manager: ContractAddress,
+         add_upper_hint: u256,
+         add_lower_hint: u256,
+         max_upfront_fee: u256
     ); 
 }
 // DeployLiquity2Script is import it, declare varibale of this type and also in AddressVars and calling function openTrove
