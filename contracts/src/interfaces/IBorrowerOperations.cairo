@@ -126,7 +126,7 @@ trait IBorrowerOperations<TContractState> {
 
     fn get_interest_individual_delegate_of(
         self: @TContractState, trove_id: u256
-    )//memory varibale
+    ) //memory varibale
     -> InterestIndividualDelegate;
     fn set_interest_individual_delegate(
         ref self: TContractState,
@@ -238,4 +238,5 @@ trait IBorrowerOperations<TContractState> {
 
 // in BorrowOpration we have to inhenits  ILiquityBase, IAddRemoveManagers because interface doesnt
 // inheints othet interface
+
 
