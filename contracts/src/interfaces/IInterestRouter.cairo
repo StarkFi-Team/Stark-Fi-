@@ -35,14 +35,15 @@ pub trait IInterestRouter<TContractState> { //
 //
 // * active_pool Contract:
 //   ^ create variable and initialize it in ctor.
-//   ^ _mint_agg_interest function - function that handles minting of BOLD tokens for interest payments and fees
+//   ^ _mint_agg_interest function - handles minting of BOLD tokens for interest payments and fees
 //     this function send the bold_token that minted to this address(IInterestRouter).
 //
 // * addresses_registry Contract:
-//   ^ set_addresses() function initalize the variable in AddressVars struct.
+//   ^ create varibale called interest_router of IInterestRouter type use it in:
+//   ^ set_addresses() function - initalize the variable in AddressVars struct.
 //   ^ emit interest_router_address_changed(address(_vars.interest_router));
 //
-// * MockInterestRouter Contract:
+// * mock_interest_router Contract:
 //   ^ contract is inheriting from the IInterestRouter.
 //   -- mock uses for testing
 //
@@ -50,10 +51,10 @@ pub trait IInterestRouter<TContractState> { //
 //   ^ LiquityContractsTestnet struct - create variable of IInterestRouter type.
 //   ^ DeploymentVarsTestnet struct create a variable call contract of LiquityContractsTestnet type.
 //   ^ (LiquityContractAddresses struct - create interest_router variable of address type).
-//   ^ _deploy_and_connect_collateral_contracts_testnet function: contracts.interestRouter =
-//     IInterestRouter(computeGovernanceAddress(deployer, SALT, _boldToken, new address[](0)));
-//     casting the address from computeGovernanceAddress function to IInterestRouter type.
-//   ^ initialize interestRouter variable in AddressVars struct in IAddressesRegistry.
+//   ^ _deploy_and_connect_collateral_contracts_testnet function: contracts.interest_router =
+//     IInterestRouter(compute_governance_Aaddress(deployer, SALT, _boldToken, new address[](0)));
+//     casting the address from compute_governance_Aaddress function to IInterestRouter type.
+//   ^ initialize interest_router variable in AddressVars struct in IAddressesRegistry.
 //
 // * base_test contract 
 //   ^ import and create variable call mock_interest_router of IInterestRouter type.
@@ -61,11 +62,11 @@ pub trait IInterestRouter<TContractState> { //
 // ------interfaces-------
 //
 // * IActivePool interface
-//   ^ create function interestRouter() that returns variable of IInterestRouter type.
+//   ^ create function interest_router() that returns variable of IInterestRouter type.
 //
 // * IAddressesRegistry interface
-//   ^ AddressVars struct - create variable of of IInterestRouter type.
-//   ^ create function interestRouter() that returns variable of IInterestRouter type.
+//   ^ AddressVars struct - create variable of IInterestRouter type.
+//   ^ create function interest_router() that returns variable of IInterestRouter type.
 //
 // ================================================================================================================================
 
