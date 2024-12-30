@@ -5,16 +5,16 @@ use starknet::ContractAddress;
 // TroveManager, ActivePool ,AddressesRegistry this interface
 #[starknet::interface]
 trait IDefaultPool<TContractState> {
-    fn troveManagerAddress(self: @TContractState) -> ContractAddress;
-    fn activePoolAddress(self: @TContractState) -> ContractAddress;
+    fn trove_manager_address(self: @TContractState) -> ContractAddress;
+    fn active_pool_address(self: @TContractState) -> ContractAddress;
     // --- fns ---
-    fn getCollBalance(self: @TContractState) -> u256;
-    fn getBoldDebt(self: @TContractState) -> u256;
-    fn sendCollToActivePool(ref self: TContractState, _amount: u256);
-    fn receiveColl(ref self: TContractState, _amount: u256);
+    fn get_coll_balance(self: @TContractState) -> u256;
+    fn get_bold_debt(self: @TContractState) -> u256;
+    fn send_coll_to_active_pool(ref self: TContractState, amount: u256);
+    fn receive_coll(ref self: TContractState, amount: u256);
 
-    fn increaseBoldDebt(ref self: TContractState, _amount: u256);
-    fn decreaseBoldDebt(ref self: TContractState, _amount: u256);
+    fn increase_bold_debt(ref self: TContractState, amount: u256);
+    fn decrease_bold_debt(ref self: TContractState, amount: u256);
 }
 //DeployLiquity2Script is  defines a variable of this type in the struct addressvars
 

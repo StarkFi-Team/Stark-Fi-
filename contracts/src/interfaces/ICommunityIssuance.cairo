@@ -2,13 +2,13 @@ use starknet::ContractAddress;
 // in this project we dont use this interface
 #[starknet::interface]
 trait ICommunityIssuance<TContractState> {
-    fn setAddresses(
+    fn set_addresses(
         ref self: TContractState,
-        _lqtyTokenAddress: ContractAddress,
-        _stabilityPoolAddress: ContractAddress
+        _lqty_token_address: ContractAddress,
+        _stability_pool_address: ContractAddress
     );
 
-    fn issueLQTY(ref self: TContractState) -> u256;
+    fn issue_LQTY(ref self: TContractState) -> u256;
 
-    fn sendLQTY(ref self: TContractState, _account: ContractAddress, _LQTYamount: u256);
+    fn send_LQTY(ref self: TContractState, account: ContractAddress, LQTY_amount: u256);
 }

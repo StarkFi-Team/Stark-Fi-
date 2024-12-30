@@ -2,39 +2,39 @@ use starknet::ContractAddress;
 
 #[starknet::interface]
 trait IHintHelpers<TContractState> {
-    fn getApproxHint(
+    fn get_approx_hint(
         self: @TContractState,
-        _collIndex: u256,
-        _interestRate: u256,
-        _numTrials: u256,
-        _inputRandomSeed: u256
+        coll_index: u256,
+        interest_rate: u256,
+        num_trials: u256,
+        input_random_seed: u256
     ) -> (u256, u256, u256);
 
-    fn predictOpenTroveUpfrontFee(
-        self: @TContractState, _collIndex: u256, _borrowedAmount: u256, _interestRate: u256
+    fn predict_open_trove_pfront_fee(
+        self: @TContractState, coll_index: u256, borrowed_amount: u256, interest_rate: u256
     ) -> u256;
 
     fn predictAdjustInterestRateUpfrontFee(
-        self: @TContractState, _collIndex: u256, _troveId: u256, _newInterestRate: u256
+        self: @TContractState, coll_index: u256, trove_id: u256, new_interest_rate: u256
     ) -> u256;
 
-    fn forcePredictAdjustInterestRateUpfrontFee(
-        self: @TContractState, _collIndex: u256, _troveId: u256, _newInterestRate: u256
+    fn force_predict_adjust_interest_rate_upfront_fee(
+        self: @TContractState, coll_index: u256, trove_id: u256, _new_interest_rate: u256
     ) -> u256;
 
-    fn predictAdjustTroveUpfrontFee(
-        self: @TContractState, _collIndex: u256, _troveId: u256, _debtIncrease: u256
+    fn predict_adjust_trove_upfront_fee(
+        self: @TContractState, coll_index: u256, trove_id: u256, debt_increase: u256
     ) -> u256;
 
-    fn predictAdjustBatchInterestRateUpfrontFee(
+    fn predict_adjust_batch_interest_rate_upfront_fee(
         self: @TContractState,
-        _collIndex: u256,
-        _batchAddress: ContractAddress,
-        _newInterestRate: u256
+        coll_index: u256,
+        batch_address: ContractAddress,
+        new_interest_rate: u256
     ) -> u256;
 
-    fn predictJoinBatchInterestRateUpfrontFee(
-        self: @TContractState, _collIndex: u256, _troveId: u256, _batchAddress: ContractAddress
+    fn predict_join_batch_interest_rate_upfront_fee(
+        self: @TContractState, coll_index: u256, trove_id: u256, batch_address: ContractAddress
     ) -> u256;
 }
 //DeployLiquity2 defines a variable of this type in the struct addressvars
