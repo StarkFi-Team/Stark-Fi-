@@ -65,7 +65,7 @@ trait IBorrowerOperations <TContractState>  {
     )  -> u256;
 
 
-_
+
     fn open_trove_and_join_interest_batch_manager(ref self:TContractState,  params: OpenTroveAndJoinInterestBatchManagerParams) -> u256;//params is calldata
 
     fn add_coll(ref self:TContractState,  trove_id: u256, ETH_amount: u256);
