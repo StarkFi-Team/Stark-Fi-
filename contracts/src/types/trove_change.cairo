@@ -1,4 +1,4 @@
-#[derive(Drop,Copy,Serde)]
+#[derive(Drop, Copy, Serde)]
 pub struct TroveChange {
     applied_redist_bold_debt_gain: u256,
     applied_redist_coll_gain: u256,

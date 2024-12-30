@@ -8,10 +8,14 @@ trait IActivePool<TContractState> {
     fn defaultPoolAddress(self: @TContractState) -> ContractAddress;
     fn borrowerOperationsAddress(self: @TContractState) -> ContractAddress;
     fn troveManagerAddress(self: @TContractState) -> ContractAddress;
-    fn interestRouter(self: @TContractState) -> IInterestRouterDispatcher; // this needs to return IInterestRouter
+    fn interestRouter(
+        self: @TContractState
+    ) -> IInterestRouterDispatcher; // this needs to return IInterestRouter
     // We avoid IStabilityPool here in order to prevent creating a dependency cycle that would break
     // flattening
-    fn stabilityPool(self: @TContractState) -> ContractAddress; // this is sapose to return IBoldRewardsReceiver
+    fn stabilityPool(
+        self: @TContractState
+    ) -> ContractAddress; // this is sapose to return IBoldRewardsReceiver
     fn getCollBalance(self: @TContractState) -> u256;
     fn getBoldDebt(self: @TContractState) -> u256;
     fn lastAggUpdateTime(self: @TContractState) -> u256;
@@ -71,6 +75,7 @@ trait IActivePool<TContractState> {
 //    that is used for calculation
 
 //    it seems like this is coming here in order to help with the calculations
+
 // # ILiquityBase -
 // imports this interface and has a function that returns a var of this type
 
@@ -118,11 +123,34 @@ trait IActivePool<TContractState> {
 //    in DeployLiquity2 - it is used to set different addresses
 
 // # DefaultPool -
+// imports this interface and then is used in
+// sendCollToActivePool function to send collateral
 
 // # IStabilityPool -
 // imports this interface
 
-// #
+// # TroveManager -
+// does not import this interface
+// * in the batchLiquidateTroves function we have IActivePool activePoolCached = activePool;
+// this var is used for minting and is being sent to a rew function from this function
+// * the function _sendGasCompensation gets a var that is IActivePool
+// and uses it to send coll
+// * the function _updateBatchInterestPriorToRedemption gets a var that is IActivePool
+// and uses it to mint
+// * in the redeemCollateral function we have IActivePool activePoolCached = activePool;
+// and it is used to mint and sent coll
+// * the function activePoolCached gets a var that is IActivePool
+// and uses it to get coll balance
 
+// # LiquityBase -
+// imports this interface
+// then it uses a var IActivePool activepool to get the amount of coll and dept
+
+// # Deployment-
+//  it has a var IActivePool public activePool - and it is used to set addresses
+
+// # BaseTest -
+// imports this interface
 // */
+
 
