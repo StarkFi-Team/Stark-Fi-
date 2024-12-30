@@ -3,8 +3,10 @@ pub trait IInterestRouter<TContractState> {//
 // Currently the Interest Router doesn’t need any specific function
 }
 //
-//
+// @audit-info
 // --------------------------------------------------------------------------------------------------------------------------------
+// General explanation
+//
 // the reason of using in empty interface:
 // * an empty interface acts as a placeholder for future functionallity
 //   making it easier to add functionallity.
@@ -17,12 +19,14 @@ pub trait IInterestRouter<TContractState> {//
 //
 //
 // ================================================================================================================================
-// where and why IInterestRouter interface used?
+// usage
+//
 // * active_pool Contract
-//
-//
-//
-//
+//   ^ create variable and initialize it in ctor.
+//   ^ _mint_agg_interest function send it as address to mint boldToken.
+// * addresses_registry Contract
+//   ^ 
+//   ^
 // ================================================================================================================================
 
 
