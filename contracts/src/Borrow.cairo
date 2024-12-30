@@ -1,4 +1,3 @@
-
 use starknet::ContractAddress;
 
 #[starknet::interface]
@@ -15,9 +14,7 @@ mod Borrower {
     use super::IBorrower;
     use starknet::{ContractAddress, get_caller_address, get_contract_address};
     use openzeppelin::token::erc20::interface::{IERC20Dispatcher, IERC20DispatcherTrait};
-    use contracts::interfaces::IMarket::{
-        IMarketDispatcher, IMarketDispatcherTrait
-    };
+    use contracts::interfaces::IMarket::{IMarketDispatcher, IMarketDispatcherTrait};
     use core::debug::PrintTrait;
     use starknet::storage::{Map, StoragePathEntry};
     use starknet::storage::{StorageMapReadAccess, StorageMapWriteAccess};
@@ -56,7 +53,7 @@ mod Borrower {
         };
     }
 
-    // TODO: Implement private functions according to the instructions 
+    // TODO: Implement private functions according to the instructions
     #[generate_trait]
     impl PrivateFunctions of PrivateFunctionsTrait {
         fn _is_supported_deposit_token(self: @ContractState, token: ContractAddress) -> bool {
@@ -78,13 +75,17 @@ mod Borrower {
             // Update the state of the contract
             let depositor = get_caller_address();
             let amount_uint256: u256 = amount.into();
-            self.deposited_amount.write(depositor, self.deposited_amount.read(depositor) + amount_uint256);
+            self
+                .deposited_amount
+                .write(depositor, self.deposited_amount.read(depositor) + amount_uint256);
 
             // Transfer the tokens from the user to the contract
-            IERC20Dispatcher { contract_address: token }.transfer_from(depositor, get_contract_address(), amount_uint256);
+            IERC20Dispatcher { contract_address: token }
+                .transfer_from(depositor, get_contract_address(), amount_uint256);
 
             // Approve the zkLend market contract to spend the tokens
-            IERC20Dispatcher { contract_address: token }.approve(self.market.read().contract_address, amount_uint256);
+            IERC20Dispatcher { contract_address: token }
+                .approve(self.market.read().contract_address, amount_uint256);
 
             // Deposit the tokens in the market contract
             self.market.read().deposit(token, amount);
@@ -97,10 +98,15 @@ mod Borrower {
             // Make sure the user has enough tokens to withdraw
             let depositor = get_caller_address();
             let amount_uint256: u256 = amount.into();
-            assert(self.deposited_amount.read(depositor) >= amount_uint256, 'Not enough tokens to withdraw');
+            assert(
+                self.deposited_amount.read(depositor) >= amount_uint256,
+                'Not enough tokens to withdraw'
+            );
 
             // Update the state of the contract
-            self.deposited_amount.write(depositor, self.deposited_amount.read(depositor) - amount_uint256);
+            self
+                .deposited_amount
+                .write(depositor, self.deposited_amount.read(depositor) - amount_uint256);
 
             // Withdraw the tokens from the market contract
             self.market.read().withdraw(token, amount);
@@ -124,7 +130,9 @@ mod Borrower {
             // Update the state of the contract
             let borrower = get_caller_address();
             let amount_uint256: u256 = amount.into();
-            self.borrowered_amount.write(borrower, self.borrowered_amount.read(borrower) + amount_uint256);
+            self
+                .borrowered_amount
+                .write(borrower, self.borrowered_amount.read(borrower) + amount_uint256);
 
             // Borrow the tokens from the market contract
             self.market.read().borrow(token, amount);
@@ -140,16 +148,23 @@ mod Borrower {
             // Make sure the user has enough tokens to repay
             let borrower = get_caller_address();
             let amount_uint256: u256 = amount.into();
-            assert(self.borrowered_amount.read(borrower) >= amount_uint256, 'Not enough tokens to repay');
+            assert(
+                self.borrowered_amount.read(borrower) >= amount_uint256,
+                'Not enough tokens to repay'
+            );
 
             // Update the state of the contract
-            self.borrowered_amount.write(borrower, self.borrowered_amount.read(borrower) - amount_uint256);
+            self
+                .borrowered_amount
+                .write(borrower, self.borrowered_amount.read(borrower) - amount_uint256);
 
             // Transfer the tokens from the user to the contract
-            IERC20Dispatcher { contract_address: token }.transfer_from(borrower, get_contract_address(), amount_uint256);
+            IERC20Dispatcher { contract_address: token }
+                .transfer_from(borrower, get_contract_address(), amount_uint256);
 
             // Approve the zkLend market contract to spend the tokens
-            IERC20Dispatcher { contract_address: token }.approve(self.market.read().contract_address, amount_uint256);
+            IERC20Dispatcher { contract_address: token }
+                .approve(self.market.read().contract_address, amount_uint256);
 
             // Repay the tokens to the market contract
             self.market.read().repay(token, amount);

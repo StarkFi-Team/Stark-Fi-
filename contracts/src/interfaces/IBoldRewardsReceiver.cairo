@@ -2,16 +2,16 @@ use starknet::ContractAddress;
 //in this interface all functions are external
 
 #[starknet::interface]
-trait IBoldRewardsReceiver<TContractState>{
-    fn triggerBoldRewards(ref self: TContractState , _boldYield:u256 );
+trait IBoldRewardsReceiver<TContractState> {
+    fn triggerBoldRewards(ref self: TContractState, _boldYield: u256);
 }
 // /*
-// # IActivepool uses this inteface - in this function 
-// function stabilityPool() external view returns (IBoldRewardsReceiver); 
+// # IActivepool uses this inteface - in this function
+// function stabilityPool() external view returns (IBoldRewardsReceiver);
 // this function returns a variable that is IBoldRewardsReceiver
 
 // # Active pool -
-// in this contract there is a variable called 
+// in this contract there is a variable called
 // IBoldRewardsReceiver public immutable stabilityPool;
 // so what does this variable do?
 // stabilityPool = IBoldRewardsReceiver(_addressesRegistry.stabilityPool());
@@ -27,3 +27,5 @@ trait IBoldRewardsReceiver<TContractState>{
 // is recieving the reward from the pool
 
 // # IStabilitypool inherits it */
+
+
