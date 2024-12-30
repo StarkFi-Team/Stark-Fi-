@@ -15,7 +15,14 @@ pub trait IInterestRouter<TContractState> { //
 //   it is a way to ensure that you use the varibales correctly,
 //   and will catch errors if you will try to use this type in unsuported variables or contracts.
 // * using in empty interface makes it easier to swap imlemantations later.
+//
+// the propuse of this interface:
+// - handle all the logic related to interest distribution
+//  * check for LPs that eligible for rewards.
+//  * manages distribution ratios.
+//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool, share of the pool.
 // --------------------------------------------------------------------------------------------------------------------------------
+//
 //
 //
 // ================================================================================================================================
@@ -26,7 +33,8 @@ pub trait IInterestRouter<TContractState> { //
 //
 // * active_pool Contract:
 //   ^ create variable and initialize it in ctor.
-//   ^ _mint_agg_interest function send it as address to mint bold_token.
+//   ^ _mint_agg_interest function - function that handles minting of BOLD tokens for interest payments and fees
+//     this function send the bold_token that minted to this address(IInterestRouter).
 //
 // * addresses_registry Contract:
 //   ^ set_addresses() function initalize the variable in AddressVars struct.
@@ -42,7 +50,12 @@ pub trait IInterestRouter<TContractState> { //
 //   ^ (LiquityContractAddresses struct - create interest_router variable of address type).
 //   ^ _deploy_and_connect_collateral_contracts_testnet function: contracts.interestRouter =
 //     IInterestRouter(computeGovernanceAddress(deployer, SALT, _boldToken, new address[](0)));
-//   ^ 
+//     casting the address from computeGovernanceAddress function to IInterestRouter type.
+//   ^ initialize interestRouter variable in AddressVars struct in IAddressesRegistry.
+//
+// * base_test contract 
+//   ^ import and create variable call mock_interest_router of IInterestRouter type.
+//
 // ------interfaces-------
 //
 // * IActivePool interface

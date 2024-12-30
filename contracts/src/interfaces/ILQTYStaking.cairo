@@ -23,5 +23,7 @@ pub trait ILQTYStaking<TContractState> {
     fn get_pending_ETH_gain(self: @TContractState, _user: ContractAddress) -> u256;
 
     fn get_pending_bold_gain(self: @TContractState, _user: ContractAddress) -> u256;
-    // this is the only time that it is used.
 }
+
+// this is the only time that it is used.
+
