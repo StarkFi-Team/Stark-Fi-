@@ -48,7 +48,6 @@ trait IDefaultPool<TContractState> {
 // so what i see is that  _amount of tokens of type Coll is sent to the Default Pool, the function
 // receiveColl is invoked.
 
-
 //DefaultPool is import, inheretins and implement it.
 
 // TroveMnager is defines a variable of this interface and send it to functions

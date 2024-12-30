@@ -16,7 +16,9 @@ pub trait IInterestRouter<TContractState> { //
 //   and will catch errors if you will try to use this type in unsuported variables or contracts.
 // * using in empty interface makes it easier to swap imlemantations later.
 //
-// the propuse of this interface:
+//
+// +++++++++ the propuse of this interface: +++++++++
+//
 // - handle all the logic related to interest distribution
 //  * check for LPs that eligible for rewards.
 //  * manages distribution ratios.
