@@ -3,22 +3,22 @@ use starknet::ContractAddress;
 
 #[starknet::interface]
 trait ICollSurplusPool<TContractState> {
-    fn getCollBalance(self : @TContractState) -> u256;
-    fn getCollateral(self : @TContractState,_account : ContractAddress) -> u256;
-    fn accountSurplus(ref self: TContractState,_account: ContractAddress, _amount:u256 );
-    fn claimColl(ref self:TContractState,_account: ContractAddress);
+    fn getCollBalance(self: @TContractState) -> u256;
+    fn getCollateral(self: @TContractState, _account: ContractAddress) -> u256;
+    fn accountSurplus(ref self: TContractState, _account: ContractAddress, _amount: u256);
+    fn claimColl(ref self: TContractState, _account: ContractAddress);
 }
 // /*
-// # CollSurplusPool - 
+// # CollSurplusPool -
 // inherits this interface and implements all the functions
 
 // # IAddressesRegistry -
-// imports this interface 
+// imports this interface
 // and defines a variable of this type in the struct addressvars
 // and defines a function named collSurplusPool that returns this type
 
 // # AddressesRegistry-
-// does not import it or inherit it because 
+// does not import it or inherit it because
 // it inherits the IAddressesRegistry and there is where it gets it from
 // it defines a var called collSurplusPool that is type ICollSurplusPool
 // and then has a function were he sets the address called setAddresses
@@ -60,3 +60,5 @@ trait ICollSurplusPool<TContractState> {
 // # BaseTest , SPInvariantsTestHandler , Deployment -
 // these are test...
 // */
+
+

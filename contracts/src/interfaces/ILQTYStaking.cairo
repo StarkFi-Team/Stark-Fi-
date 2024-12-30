@@ -3,12 +3,14 @@ use starknet::ContractAddress;
 //in this interface all functions are external
 #[starknet::interface]
 pub trait ILQTYStaking<TContractState> {
-    fn setAddresses(ref self: TContractState,
+    fn setAddresses(
+        ref self: TContractState,
         _lqtyTokenAddress: ContractAddress,
         _boldTokenAddress: ContractAddress,
-        _troveManagerAddress:ContractAddress,
+        _troveManagerAddress: ContractAddress,
         _borrowerOperationsAddress: ContractAddress,
-        _activePoolAddress: ContractAddress);
+        _activePoolAddress: ContractAddress
+    );
 
     fn stake(ref self: TContractState, _LQTYamount: u256);
 
@@ -21,6 +23,5 @@ pub trait ILQTYStaking<TContractState> {
     fn getPendingETHGain(self: @TContractState, _user: ContractAddress) -> u256;
 
     fn getPendingBoldGain(self: @TContractState, _user: ContractAddress) -> u256;
-
     // this is the only time that it is used.
 }
