@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #[starknet::interface]
 pub trait IStabilityPoolEvents<
     TContractState
@@ -10,6 +9,3 @@ pub trait IStabilityPoolEvents<
 //https://docs.starknet.io/architecture-and-concepts/smart-contracts/starknet-events/
 
 }
-=======
-
->>>>>>> 9c8bb6ef67de54c29fbf93313f6d47dc1530b2ed

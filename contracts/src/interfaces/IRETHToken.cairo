@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #[starknet::interface]
 pub trait IRETHToken<TContractState> {
     //the function is external and view
@@ -8,6 +7,4 @@ pub trait IRETHToken<TContractState> {
 //if the contract implement the interface and has this function- implement it
 //otherwise, I don't know, we will see it there...
 
-=======
->>>>>>> 9c8bb6ef67de54c29fbf93313f6d47dc1530b2ed
 
