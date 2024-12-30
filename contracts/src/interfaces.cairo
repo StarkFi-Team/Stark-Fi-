@@ -13,5 +13,6 @@ mod ICommunityIssuance;
 mod ICollSurplusPool;
 mod IBoldRewardsReceiver;
 mod IAddRemoveManagers;
-mod IActivepool;
+mod ILiquityBase;
+mod IActivePool;
 

@@ -5,7 +5,7 @@ use starknet::ContractAddress;
 
 #[starknet::interface]
 trait ILiquityBase<TContractState> {
-    fn activePool(self: @TContractState) -> IActivePool;
+    fn activePool(self: @TContractState) -> IActivePoolDispatcher;
     fn getEntireSystemDebt(self: @TContractState) -> u256;
     fn getEntireSystemColl(self: @TContractState) -> u256;
 }
@@ -20,4 +20,5 @@ trait ILiquityBase<TContractState> {
 
 // # IStabilityPool -
 // imports this interface and inherits it
+
 
