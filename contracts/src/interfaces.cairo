@@ -14,4 +14,7 @@ mod ICollSurplusPool;
 mod IBoldRewardsReceiver;
 mod IAddRemoveManagers;
 mod IActivepool;
+mod IMainnetPriceFeed;
+mod IRETHPriceFeed;
+mod IWSTETHPriceFeed;
 
