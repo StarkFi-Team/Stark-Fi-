@@ -13,4 +13,7 @@ mod ICommunityIssuance;
 mod ICollSurplusPool;
 mod IBoldRewardsReceiver;
 mod IAddRemoveManagers;
+mod ITroveNFT;
+mod IBorrowerOperations;
+mod ITroveManager;
 
