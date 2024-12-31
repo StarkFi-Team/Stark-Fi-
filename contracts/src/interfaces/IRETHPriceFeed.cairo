@@ -1,7 +1,9 @@
-use dependencies::AggregatorV3Interface;
+
+use contracts::dependencies::AggregatorV3Interface::{AggregatorV3InterfaceDispatcher,AggregatorV3InterfaceDispatcherTrait};
+
 #[starknet::interface]
 pub trait IRETHPriceFeed<TContractState> {
-    fn rEth_Eth_oracle(self: @TContractState) -> (AggregatorV3Interface, u256, u8);
+    fn rEth_Eth_oracle(self: @TContractState) -> (AggregatorV3InterfaceDispatcher, u256, u8);
 }
 //---------------------------------------------------
 //changes from solidity and other notes
