@@ -4,10 +4,9 @@ use starknet::ContractAddress;
 // DeployLiquity2Script,TestDeployer,BaseTest,IAddressesRegistry,IAddressesRegistry,LiquityBase,
 // TroveManager, ActivePool ,AddressesRegistry this interface
 #[starknet::interface]
-trait IDefaultPool<TContractState> {
+pub trait IDefaultPool<TContractState> {
     fn trove_manager_address(self: @TContractState) -> ContractAddress;
     fn active_pool_address(self: @TContractState) -> ContractAddress;
-    // --- fns ---
     fn get_coll_balance(self: @TContractState) -> u256;
     fn get_bold_debt(self: @TContractState) -> u256;
     fn send_coll_to_active_pool(ref self: TContractState, amount: u256);
@@ -47,7 +46,6 @@ trait IDefaultPool<TContractState> {
 // }
 // so what i see is that  _amount of tokens of type Coll is sent to the Default Pool, the function
 // receiveColl is invoked.
-
 
 //DefaultPool is import, inheretins and implement it.
 
