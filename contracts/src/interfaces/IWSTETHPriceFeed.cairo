@@ -1,8 +1,10 @@
-use dependencies::AggregatorV3Interface;
+
+use contracts::dependencies::AggregatorV3Interface::{AggregatorV3InterfaceDispatcher,AggregatorV3InterfaceDispatcherTrait};
+
 
 #[starknet::interface]
 pub trait IWSTETHPriceFeed<TContractState> {
-    fn stEth_usd_oracle(self: @TContractState) -> (AggregatorV3Interface, u256, u8);
+    fn stEth_usd_oracle(self: @TContractState) -> (AggregatorV3InterfaceDispatcher, u256, u8);
 }
 //exactly like the IRethPriceFeed...
 //later I will update all of this description

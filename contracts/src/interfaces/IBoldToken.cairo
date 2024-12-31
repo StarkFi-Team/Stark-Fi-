@@ -1,6 +1,5 @@
 use starknet::ContractAddress;
 
-// in this interface all functions are external
 #[starknet::interface]
 trait IBoldToken<TContractState> {
     fn set_branch_addresses(
@@ -40,6 +39,9 @@ trait IBoldToken<TContractState> {
 // because in cairo interface can't inherit another interfaces,
 // so we need to inherit in impl this interface.
 // and also import - use openzeppelin::token::erc20::IERC20Metadata; etc.
+//
+// in this interface all functions are external
+//
 // ################################################################################################################################
 //
 //
