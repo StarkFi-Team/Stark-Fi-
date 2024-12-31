@@ -1,21 +1,23 @@
 use starknet::ContractAddress;
 
 #[starknet::interface]
-trait IWETH<TContractState> {
-    fn deposit(ref self: TContractState); //payable
-    fn withdraw(ref self: TContractState, wad: u256);
+trait ILQTYToken<TContractState> {
+    fn send_to_LQTY_staking(ref self: TContractState, sender: ContractAddress, amount: u256);
+
+    fn get_deployment_start_time(self: @TContractState) -> u256;
+
+    fn get_lp_rewards_entitlement(self: @TContractState) -> u256;
 }
 // @note
 // ################################################################################################################################
 // changes from solidity and other notes
 // ################################################################################################################################
+// this trait need to inherit IERC20, IERC20Permit.
+// because in cairo interface can't inherit another interfaces,
+// so we need to inherit in impl this interface.
+// and also import - use openzeppelin::token::erc20::IERC20Metadata; etc.
 //
-// in this interface all functions are external.
-//
-// this trait need to inheirt IERC20Metadata,
-// because in cairo interface can't inheirt another interfaces,
-// so we need to inheirt it in impl this interface,
-// and to import it - use openzeppelin::token::erc20::IERC20Metadata;
+// in this interface all functions are external
 //
 // ################################################################################################################################
 //
@@ -45,5 +47,4 @@ trait IWETH<TContractState> {
 //
 //
 // ================================================================================================================================
-
 
