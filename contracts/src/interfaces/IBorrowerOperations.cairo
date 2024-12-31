@@ -1,10 +1,9 @@
-use starknet::ContractAddress;
-
 use contracts::interfaces::IAddRemoveManagers::{IAddRemoveManagersDispatcher};
-use contracts::interfaces::IBoldToken::{IBoldTokenDispatcher};
-use contracts::interfaces::IPriceFeed::{IPriceFeedDispatcher};
-use contracts::interfaces::ISortedTroves::{ISortedTrovesDispatcher};
-use contracts::interfaces::IWETH::{IWETHDispatcher};
+use contracts::interfaces::IBoldToken::{IBoldTokenDispatcherTrait, IBoldTokenDispatcher};
+use contracts::interfaces::IPriceFeed::{IPriceFeedDispatcherTrait, IPriceFeedDispatcher};
+use contracts::interfaces::ISortedTroves::{ISortedTrovesDispatcherTrait, ISortedTrovesDispatcher};
+use contracts::interfaces::IWETH::{IWETHDispatcherTrait, IWETHDispatcher};
+use starknet::ContractAddress;
 
 
 #[derive(Copy, Drop)]
@@ -40,7 +39,7 @@ pub struct InterestBatchManager {
 
 
 // Common interface for the Borrower Operations.
-#[starknet::interface]
+// #[starknet::interface]
 pub trait IBorrowerOperations<TContractState> {
     fn CCR(self: @TContractState) -> u256;
     fn MCR(self: @TContractState) -> u256;
@@ -219,24 +218,25 @@ pub trait IBorrowerOperations<TContractState> {
 //  The token is burned directly from the user's address that calls the closeTrove function (i.e.,
 //  msg.sender).
 //* fn adjust_trove(ref self:TContractState,trove_id: u256,coll_change: u256,is_coll_increase:
-//u256,debt_change: u256,is_debt_increase: bool,max_upfront_fee: u256 );
+//  u256,debt_change: u256,is_debt_increase: bool,max_upfront_fee: u256 );
 //  The function modifies the properties of an existing Trove, including increasing or decreasing
 //  the collateral and debt (Bold), while ensuring system conditions are met and necessary fees are
 //  paid.
 //* fn adjustZombieTrove(ref self:TContractState,trove_id: u256,coll_change:
-//u256,is_coll_increase:bool,bold_change: u256, is_debt_increase: bool, upper_int: u256,lower_hint:
-//u256,max_upfront_fee: u256);
+//  u256,is_coll_increase:bool,bold_change: u256, is_debt_increase: bool, upper_int:
+//  u256,lower_hint:
+//  u256,max_upfront_fee: u256);
 //  The adjustZombieTrove function is designed to modify the attributes of a Zombie Trove (a Trove
 //  that does not meet the minimum requirements), including increasing or decreasing the collateral
 //  and debt (Bold), and returning it to an active state while updating the system accordingly.
 //* fn adjust_trove_interest_rate(ref self:TContractState,trove_id: u256,new_annual_interest_rate:
-//u256,upper_hint: u256,lower_hint: u256,max_upfront_fee: u256) ;
+//  u256,upper_hint: u256,lower_hint: u256,max_upfront_fee: u256) ;
 //  The adjustTroveInterestRate function allows changing the annual interest rate of an existing
 //  Trove while updating the debt and collateral data accordingly. It ensures that all required
 //  conditions are met, including time restrictions and upfront fee adjustments, and updates the
 //  system's data structures.
-//* fn apply_pending_debt(ref self:TContractState, trove_id: u256, lower_hint: u256, upper_hint:
-//u256);
+//* fn apply_pending_debt(ref self:TContractState, trove_id: u256, lower_hint: u256,
+//upper_hint:u256);
 //  The applyPendingDebt function is designed to apply the pending debt and redistribution gains to
 //  a specific Trove, update the calculations related to debt and interest management, and restore a
 //  Zombie Trove (if applicable) to an active state.
@@ -265,8 +265,8 @@ pub trait IBorrowerOperations<TContractState> {
 //varibale-> InterestIndividualDelegate ;
 //  The function returns the information about the Interest Individual Delegate associated with a
 //  specific Trove in the system.
-//* fn set_interest_individual_delegate(ref self:TContractState,trove_id: u256,delegate :
-//ContracrAddress,min_interest_rate: u128,  max_interest_rate: u128,
+//* fn set_interest_individual_delegate(ref self:TContractState,trove_id: u256,delegate
+//:ContracrAddress,min_interest_rate: u128,  max_interest_rate: u128,
 //  only needed if trove was previously in a batch:new_annual_interest_rate: u256, upper_hint: u256,
 //  lower_hint: u256,max_upfront_fee: u256, min_interest_rate_change_period: u256);
 //  The setInterestIndividualDelegate function allows a user to set or update the Interest
@@ -304,7 +304,7 @@ pub trait IBorrowerOperations<TContractState> {
 //u256,upper_hint: u256,lower_hint: u256,max_upfront_fee: u256);
 //  the function is remove trove from batch
 //* fn switch_batch_manager(ref self:TContractState,  trove_id: u256,remove_upper_hint: u256,
-//remove_lower_hint: u256, new_batch_manager: ContractAddress, add_upper_hint: u256,add_lower_hint:
+//  remove_lower_hint: u256, new_batch_manager: ContractAddress, add_upper_hint: u256,add_lower_hint:
 //u256,max_upfront_fee: u256);
 //  The  function is used to transfer a Trove from one Batch Manager to another. It removes the
 //  Trove from the current batch and assigns it to the new Batch Manager while updating all the

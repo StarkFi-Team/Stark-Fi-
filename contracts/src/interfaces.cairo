@@ -17,7 +17,7 @@ mod IActivepool;
 mod ITroveNFT;
 mod IBorrowerOperations;
 mod ITroveManager;
-mod ILiquityBase;
+// mod ILiquityBase;
 mod IBoldToken;
 mod ISortedTroves;
 mod IWETH;

@@ -1,6 +1,6 @@
 use starknet::ContractAddress;
 use openzeppelin::token::erc20::{ERC20Component, ERC20HooksEmptyImpl};
-use contracts::interfaces::ITroveManager::{ITroveManagerDispatcher};
+use contracts::interfaces::ITroveManager::{ITroveManagerDispatcherTrait, ITroveManagerDispatcher};
 
 
 //TroveNFT we have to inhenits  IERC721Metadata because interface doesnt inheints other interface

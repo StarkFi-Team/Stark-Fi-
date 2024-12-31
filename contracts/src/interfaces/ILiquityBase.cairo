@@ -4,7 +4,7 @@ use contracts::interfaces::IDefaultPool::{IDefaultPoolDispatcher};
 use starknet::ContractAddress;
 
 #[starknet::interface]
-trait ILiquityBase<TContractState> {
+pub trait ILiquityBase<TContractState> {
     fn activePool(self: @TContractState) -> IActivePool;
     fn getEntireSystemDebt(self: @TContractState) -> u256;
     fn getEntireSystemColl(self: @TContractState) -> u256;
