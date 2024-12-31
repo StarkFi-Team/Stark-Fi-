@@ -9,3 +9,4 @@ pub trait IPriceFeed<TContractState> {
 //the interface of price feed of each branch implements this interface
 //all functions are external
 
+

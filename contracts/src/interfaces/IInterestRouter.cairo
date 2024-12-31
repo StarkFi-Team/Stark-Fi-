@@ -22,7 +22,8 @@ pub trait IInterestRouter<TContractState> { //
 // - handle all the logic related to interest distribution
 //  * check for LPs that eligible for rewards.
 //  * manages distribution ratios.
-//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool, share of the pool.
+//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool,
+//  share of the pool.
 // --------------------------------------------------------------------------------------------------------------------------------
 //
 //
@@ -35,7 +36,8 @@ pub trait IInterestRouter<TContractState> { //
 //
 // * active_pool Contract:
 //   ^ create variable and initialize it in ctor.
-//   ^ _mint_agg_interest function - function that handles minting of BOLD tokens for interest payments and fees
+//   ^ _mint_agg_interest function - function that handles minting of BOLD tokens for interest
+//   payments and fees
 //     this function send the bold_token that minted to this address(IInterestRouter).
 //
 // * addresses_registry Contract:
@@ -55,7 +57,7 @@ pub trait IInterestRouter<TContractState> { //
 //     casting the address from computeGovernanceAddress function to IInterestRouter type.
 //   ^ initialize interestRouter variable in AddressVars struct in IAddressesRegistry.
 //
-// * base_test contract 
+// * base_test contract
 //   ^ import and create variable call mock_interest_router of IInterestRouter type.
 //
 // ------interfaces-------

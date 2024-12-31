@@ -31,4 +31,3 @@ pub trait IMainnetPriceFeed<TContractState> {
 //I didn't see usage in the project, I think that the only use is in the tests.
 
 
-
