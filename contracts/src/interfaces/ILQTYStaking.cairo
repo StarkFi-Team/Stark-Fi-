@@ -1,6 +1,5 @@
 use starknet::ContractAddress;
 
-//in this interface all functions are external
 #[starknet::interface]
 pub trait ILQTYStaking<TContractState> {
     fn set_addresses(
@@ -24,8 +23,16 @@ pub trait ILQTYStaking<TContractState> {
 
     fn get_pending_bold_gain(self: @TContractState, _user: ContractAddress) -> u256;
 }
+// @note
+// ################################################################################################################################
+// changes from solidity and other notes
+// ################################################################################################################################
 //
-// @audit-info
+// in this interface all functions are external
+//
+// ################################################################################################################################
+//
+//
 // --------------------------------------------------------------------------------------------------------------------------------
 // General explanation
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -84,3 +91,4 @@ pub trait ILQTYStaking<TContractState> {
 // this is the only time that it is used!
 //
 // ================================================================================================================================
+

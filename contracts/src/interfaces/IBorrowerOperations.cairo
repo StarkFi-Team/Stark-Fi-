@@ -5,7 +5,6 @@ use contracts::interfaces::ISortedTroves::{ISortedTrovesDispatcherTrait, ISorted
 use contracts::interfaces::IWETH::{IWETHDispatcherTrait, IWETHDispatcher};
 use starknet::ContractAddress;
 
-
 #[derive(Copy, Drop, Serde)]
 pub struct OpenTroveAndJoinInterestBatchManagerParams {
     owner: ContractAddress,
@@ -304,7 +303,8 @@ pub trait IBorrowerOperations<TContractState> {
 //u256,upper_hint: u256,lower_hint: u256,max_upfront_fee: u256);
 //  the function is remove trove from batch
 //* fn switch_batch_manager(ref self:TContractState,  trove_id: u256,remove_upper_hint: u256,
-//  remove_lower_hint: u256, new_batch_manager: ContractAddress, add_upper_hint: u256,add_lower_hint:
+//  remove_lower_hint: u256, new_batch_manager: ContractAddress, add_upper_hint:
+//  u256,add_lower_hint:
 //u256,max_upfront_fee: u256);
 //  The  function is used to transfer a Trove from one Batch Manager to another. It removes the
 //  Trove from the current batch and assigns it to the new Batch Manager while updating all the

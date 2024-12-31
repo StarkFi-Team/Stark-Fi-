@@ -21,3 +21,4 @@ mod ILiquityBase;
 mod IBoldToken;
 mod ISortedTroves;
 mod IWETH;
+mod ILQTYToken;
