@@ -1,23 +1,21 @@
 //use interfaces::IPriceFeed;
+use dependencies::AggregatorV3Interface;
 
-use contracts::dependencies::AggregatorV3Interface::{AggregatorV3InterfaceDispatcher,AggregatorV3InterfaceDispatcherTrait};
-
-#[derive(Drop, Serde, starknet::Store)]
+#[derive(Drop)]
 enum PriceSource {
-    // Determines where the PriceFeed sources data from. Possible states:
-
-    Primary,              // - Uses the primary price calcuation, which depends on the specific feed
-    ETHUSDxCanonical,     // - Uses Chainlink's ETH-USD multiplied by the LST' canonical rate
-    LastGoodPrice         // - the last good price recorded by this PriceFeed.
+    Primary,
+    ETHUSDxCanonical,
+    LastGoodPrice
 }
+
 
 #[starknet::interface]
 pub trait IMainnetPriceFeed<TContractState> {
-    fn eth_usd_oracle(self: @TContractState) -> (AggregatorV3InterfaceDispatcher, u256, u8);
+    fn eth_usd_oracle(self: @TContractState) -> (AggregatorV3Interface, u256, u8);
     fn price_source(self: @TContractState) -> PriceSource;
 }
 //------------------------------------------------
-//changes from solidity and other notes
+//changes from solidity and other noted
 //------------------------------------------------
 //this interface supposed to use also the IPriceFeed interface,
 //but in cairo it doesn't possible
@@ -25,15 +23,10 @@ pub trait IMainnetPriceFeed<TContractState> {
 //------------------------------------------------
 //implementation and references
 //------------------------------------------------
-//the priceFeed of the other LST's inherit it.
-//the main usage is in mainnetPriceFeedBase that inherit
-// in the mainnetPriceFeedBase also the PriceSource used 
-// to inform what is the source of the priceFeed.
-
+//the priceFeed of the other LST's implements it.
+//the main usage is in mainnetPriceFeedBase
 
 //I didn't see any implementation of the functions in the project
 //maybe the functions are implemented in the external contracts of the priceFeed service
 //I didn't see usage in the project, I think that the only use is in the tests.
-
-
 

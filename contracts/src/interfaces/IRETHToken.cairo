@@ -1,4 +1,3 @@
-
 #[starknet::interface]
 pub trait IRETHToken<TContractState> {
     //the function is external and view

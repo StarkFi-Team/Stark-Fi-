@@ -17,4 +17,4 @@ mod IActivepool;
 mod IMainnetPriceFeed;
 mod IRETHPriceFeed;
 mod IWSTETHPriceFeed;
-
+mod ILiquityBase;
