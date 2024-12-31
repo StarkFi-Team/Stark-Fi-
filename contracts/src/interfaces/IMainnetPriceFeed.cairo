@@ -30,4 +30,3 @@ pub trait IMainnetPriceFeed<TContractState> {
 //maybe the functions are implemented in the external contracts of the priceFeed service
 //I didn't see usage in the project, I think that the only use is in the tests.
 
-

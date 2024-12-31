@@ -13,6 +13,14 @@ mod ICommunityIssuance;
 mod ICollSurplusPool;
 mod IBoldRewardsReceiver;
 mod IAddRemoveManagers;
-mod ILiquityBase;
 mod IActivePool;
-
+mod ITroveNFT;
+mod IBorrowerOperations;
+mod ITroveManager;
+mod ILiquityBase;
+mod IBoldToken;
+mod ISortedTroves;
+mod IWETH;
+mod IMainnetPriceFeed;
+mod IRETHPriceFeed;
+mod IWSTETHPriceFeed;

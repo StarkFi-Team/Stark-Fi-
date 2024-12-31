@@ -1,7 +1,7 @@
 use starknet::ContractAddress;
 
 #[starknet::interface]
-trait IHintHelpers<TContractState> {
+pub trait IHintHelpers<TContractState> {
     fn get_approx_hint(
         self: @TContractState,
         coll_index: u256,

@@ -1,7 +1,7 @@
 use starknet::ContractAddress;
 // in this project we dont use this interface
 #[starknet::interface]
-trait ICommunityIssuance<TContractState> {
+pub trait ICommunityIssuance<TContractState> {
     fn set_addresses(
         ref self: TContractState,
         _lqty_token_address: ContractAddress,
