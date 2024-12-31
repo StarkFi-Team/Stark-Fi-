@@ -42,9 +42,9 @@ pub trait ILQTYStaking<TContractState> {
 //      1.starts earning rewards (ETH fees and BOLD tokens).
 //      2.updates user's stake in the system.
 //      3.tracks time of stake for reward calculations.
-//   
+//
 // * fn unstake():
-//   users withdraws LQTY tokens from staking -> 
+//   users withdraws LQTY tokens from staking ->
 //      1.claims any pending rewards.
 //      2.updates user's staking position.
 //      3.reduces future reward earnings.
@@ -69,8 +69,9 @@ pub trait ILQTYStaking<TContractState> {
 //
 //
 // +++++++++ the propuse of this interface: +++++++++
-// 
-// users can stake their LQTY tokens to earn passive income from the protocol's operation by this interface.
+//
+// users can stake their LQTY tokens to earn passive income from the protocol's operation by this
+// interface.
 //
 // --------------------------------------------------------------------------------------------------------------------------------
 //
@@ -83,3 +84,4 @@ pub trait ILQTYStaking<TContractState> {
 // this is the only time that it is used!
 //
 // ================================================================================================================================
+

@@ -22,7 +22,8 @@ pub trait IInterestRouter<TContractState> { //
 // - handle all the logic related to interest distribution
 //  * check for LPs that eligible for rewards.
 //  * manages distribution ratios.
-//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool, share of the pool.
+//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool,
+//  share of the pool.
 // --------------------------------------------------------------------------------------------------------------------------------
 //
 //
@@ -56,7 +57,7 @@ pub trait IInterestRouter<TContractState> { //
 //     casting the address from compute_governance_Aaddress function to IInterestRouter type.
 //   ^ initialize interest_router variable in AddressVars struct in IAddressesRegistry.
 //
-// * base_test contract 
+// * base_test contract
 //   ^ import and create variable call mock_interest_router of IInterestRouter type.
 //
 // ------interfaces-------
