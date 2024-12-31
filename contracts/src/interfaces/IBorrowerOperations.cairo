@@ -6,7 +6,7 @@ use contracts::interfaces::IWETH::{IWETHDispatcherTrait, IWETHDispatcher};
 use starknet::ContractAddress;
 
 
-#[derive(Copy, Drop)]
+#[derive(Copy, Drop, Serde)]
 pub struct OpenTroveAndJoinInterestBatchManagerParams {
     owner: ContractAddress,
     owner_index: u256,
@@ -21,7 +21,7 @@ pub struct OpenTroveAndJoinInterestBatchManagerParams {
     receiver: ContractAddress
 }
 
-#[derive(Copy, Drop)]
+#[derive(Copy, Drop, Serde)]
 // -- individual delegation --
 pub struct InterestIndividualDelegate {
     account: ContractAddress,
@@ -29,7 +29,7 @@ pub struct InterestIndividualDelegate {
     max_interest_rate: u128,
     min_interest_rate_change_period: u256,
 }
-#[derive(Copy, Drop)]
+#[derive(Copy, Drop, Serde)]
 // -- batches --
 pub struct InterestBatchManager {
     min_interest_rate: u128,
@@ -39,7 +39,7 @@ pub struct InterestBatchManager {
 
 
 // Common interface for the Borrower Operations.
-// #[starknet::interface]
+#[starknet::interface]
 pub trait IBorrowerOperations<TContractState> {
     fn CCR(self: @TContractState) -> u256;
     fn MCR(self: @TContractState) -> u256;
