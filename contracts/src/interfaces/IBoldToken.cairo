@@ -29,9 +29,7 @@ trait IBoldToken<TContractState> {
         ref self: TContractState, pool_address: ContractAddress, user: ContractAddress, amount: u256
     );
 }
-//
 // @note
-//
 // ################################################################################################################################
 // changes from solidity and other notes
 // ################################################################################################################################
