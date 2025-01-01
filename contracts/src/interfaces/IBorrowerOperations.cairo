@@ -309,6 +309,10 @@ pub trait IBorrowerOperations<TContractState> {
 //  The  function is used to transfer a Trove from one Batch Manager to another. It removes the
 //  Trove from the current batch and assigns it to the new Batch Manager while updating all the
 //  required data.
+// +++++++++ the propuse of this interface: +++++++++
+//  Trove management, including opening, closing and adjusting Troves, as well as interest management and operations related to collateral 
+//  and debt.Its purpose is for users to perform loan and repayment operations, and help the manager maintain the stability of the 
+//  system and compliance with the requirements
 //   --------------------------------------------------------------------------------------------------------------------------------
 
 // DeployLiquity2Script is import it, declare varibale of this type and also in AddressVars and

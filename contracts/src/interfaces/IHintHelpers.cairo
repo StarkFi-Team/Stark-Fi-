@@ -37,6 +37,9 @@ pub trait IHintHelpers<TContractState> {
         self: @TContractState, coll_index: u256, trove_id: u256, batch_address: ContractAddress
     ) -> u256;
 }
+//Predicting fees, calculating interest rates, and making adjustments in the Trove management system aim to enhance efficiency, 
+//transparency, and cost understanding for users and managers.
+
 //DeployLiquity2 defines a variable of this type in the struct addressvars
 
 //OpenTroves import it

@@ -15,6 +15,8 @@ pub trait IDefaultPool<TContractState> {
     fn increase_bold_debt(ref self: TContractState, amount: u256);
     fn decrease_bold_debt(ref self: TContractState, amount: u256);
 }
+// Responsible for managing the default pool, including handling collaterals and BOLD debts accumulated from Trove liquidations,
+// and transferring collaterals between pools to maintain system stability.
 //DeployLiquity2Script is  defines a variable of this type in the struct addressvars
 
 // AddressesRegistry is defines a variable of this interface
@@ -47,7 +49,7 @@ pub trait IDefaultPool<TContractState> {
 // so what i see is that  _amount of tokens of type Coll is sent to the Default Pool, the function
 // receiveColl is invoked.
 
-//DefaultPool is import, inheretins and implement it.
+//DefaultPool is import, inheretins and implement the interface.
 
 // TroveMnager is defines a variable of this interface and send it to functions
 
@@ -59,7 +61,7 @@ pub trait IDefaultPool<TContractState> {
 
 // ILiquityBase  is import it
 
-//BaseTest is import, defines a variable
+//BaseTest is test
 
 //Deployment defines a variable and deploy the contract
 
