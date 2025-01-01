@@ -16,12 +16,12 @@ trait IBoldToken<TContractState> {
 
     fn mint(ref self: TContractState, account: ContractAddress, amount: u256);
 
-    fn burn(ref self: TContractState, account: ContractAddress, _amount: u256);
+    fn burn(ref self: TContractState, account: ContractAddress, amount: u256);
 
     fn send_to_pool(
         ref self: TContractState,
         sender: ContractAddress,
-        poolAddress: ContractAddress,
+        pool_address: ContractAddress,
         amount: u256
     );
 
@@ -47,13 +47,38 @@ trait IBoldToken<TContractState> {
 // General explanation
 // --------------------------------------------------------------------------------------------------------------------------------
 //
-// explain all functions in the interface.
+// * fn set_branch_addresses():
+//   sets the core protocol contract addresses, define which contracts can interact with the token:
+//   - trove_manager_address
+//   - stability_pool_address
+//   - borrower_operations_address
+//   - active_pool_address
 //
+// * fn set_collateral_registry():
+//   used for multi-collateral management:
+//    this function receives the address of collateral_registry contract and sets up which collateral
+//    types can be used against BOLD token.
+//   this function called at initialize of this system and only by the owner.
 //
+// * fn mint():
+//   create new BOLD tokens.
+//
+// * fn burn():
+//   destroys existing BOLD tokens.
+//
+// * fn send_to_pool():
+//   moves BOLD tokens from a user to a protocol pool. used when:
+//   - users deposit BOLD to StabilityPool for earning rewards.
+//   - during liquidation processes.
+//
+// * fn return_from_pool():
+//   moves BOLD tokens from a protocol pool to a user. used when:
+//   - Users withdraw their BOLD from the StabilityPool deposits.
+//   - during liquidation processes.
 //
 // +++++++++ the propuse of this interface: +++++++++
 //
-//
+// define the functionality of BOLD token.
 //
 // --------------------------------------------------------------------------------------------------------------------------------
 //
@@ -69,4 +94,5 @@ trait IBoldToken<TContractState> {
 //
 //
 // ================================================================================================================================
+
 
