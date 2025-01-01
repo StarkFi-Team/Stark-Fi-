@@ -5,7 +5,6 @@ use contracts::interfaces::ISortedTroves::{ISortedTrovesDispatcherTrait, ISorted
 use contracts::interfaces::IWETH::{IWETHDispatcherTrait, IWETHDispatcher};
 use starknet::ContractAddress;
 
-
 #[derive(Copy, Drop, Serde)]
 pub struct OpenTroveAndJoinInterestBatchManagerParams {
     owner: ContractAddress,

@@ -21,6 +21,8 @@ mod ILiquityBase;
 mod IBoldToken;
 mod ISortedTroves;
 mod IWETH;
+mod ILQTYToken;
 mod IMainnetPriceFeed;
 mod IRETHPriceFeed;
 mod IWSTETHPriceFeed;
+mod ICollateralRegistry;

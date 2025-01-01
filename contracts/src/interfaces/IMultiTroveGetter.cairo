@@ -1,7 +1,7 @@
 use starknet::ContractAddress;
 use array::Array;
 
-#[derive(Copy, Clone, Drop)]
+#[derive(Copy, Drop, Serde)]
 pub struct CombinedTroveData {
     id: u256,
     debt: u256,
@@ -17,16 +17,15 @@ pub struct CombinedTroveData {
     snapshot_bold_debt: u256
 }
 
-#[derive(Copy, Clone, Drop)]
+#[derive(Copy, Drop, Serde)]
 pub struct DebtPerInterestRate {
     interest_batch_manager: ContractAddress,
     interest_rate: u256,
     debt: u256
 }
 
-//in this interface all functions are external
-// #[starknet::interface]
-pub trait IMultiTroveGetter<TContractState> {
+#[starknet::interface]
+trait IMultiTroveGetter<TContractState> {
     //_startIdx: i256 //
     fn get_multiple_sorted_troves(
         self: @TContractState, coll_index: u256, start_id_x: u256, count: u256
@@ -36,8 +35,16 @@ pub trait IMultiTroveGetter<TContractState> {
         self: @TContractState, coll_index: u256, start_id: u256, max_iterations: u256
     ) -> (Array<DebtPerInterestRate>, u256);
 }
+// @note
+// ################################################################################################################################
+// changes from solidity and other notes
+// ################################################################################################################################
 //
-// @audit-info
+// in this interface all functions are external
+//
+// ################################################################################################################################
+//
+//
 // --------------------------------------------------------------------------------------------------------------------------------
 // General explanation
 // --------------------------------------------------------------------------------------------------------------------------------
