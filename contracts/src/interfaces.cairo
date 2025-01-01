@@ -24,3 +24,4 @@ mod IWETH;
 mod IMainnetPriceFeed;
 mod IRETHPriceFeed;
 mod IWSTETHPriceFeed;
+mod ICollateralRegistry;
