@@ -1,6 +1,3 @@
-
 use starknet::ContractAddress;
 #[starknet::interface]
-trait IBoldToken<TContractState>{
-
-}
+trait IBoldToken<TContractState> {}

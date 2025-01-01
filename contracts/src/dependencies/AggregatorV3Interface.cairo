@@ -1,5 +1,6 @@
 // // SPDX-License-Identifier: MIT
-// // Code from https://github.com/smartcontractkit/chainlink/blob/master/evm-contracts/src/v0.6/interfaces/AggregatorV3Interface.sol
+// // Code from
+// https://github.com/smartcontractkit/chainlink/blob/master/evm-contracts/src/v0.6/interfaces/AggregatorV3Interface.sol
 
 // pragma solidity 0.8.24;
 
@@ -8,11 +9,10 @@
 //     function latestRoundData()
 //         external
 //         view
-//         returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+//         returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80
+//         answeredInRound);
 // }
 
 //TODO: check the chainlink on starknet and copy the interface
 #[starknet::interface]
-pub trait AggregatorV3Interface<TContractState>{
-
-}
+pub trait AggregatorV3Interface<TContractState> {}

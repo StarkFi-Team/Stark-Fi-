@@ -41,7 +41,7 @@ pub trait IMultiTroveGetter<TContractState> {
 // --------------------------------------------------------------------------------------------------------------------------------
 // General explanation
 // --------------------------------------------------------------------------------------------------------------------------------
-// 
+//
 // * CombinedTroveData struct:
 //   this structure stores ALL information about a single loan (Trove).
 //   id: u256,                                // Unique identifier for each loan
@@ -92,7 +92,8 @@ pub trait IMultiTroveGetter<TContractState> {
 // - handle all the logic related to interest distribution
 //  * check for LPs that eligible for rewards.
 //  * manages distribution ratios.
-//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool, share of the pool.
+//  * handles the actual token distribution to LPs based on: Provided liquidity, time in the pool,
+//  share of the pool.
 // --------------------------------------------------------------------------------------------------------------------------------
 //
 //
@@ -118,7 +119,7 @@ pub trait IMultiTroveGetter<TContractState> {
 //     makes sure they can all communicate with each other
 //     verifies everything is set up correctly
 //     in this function:
-//     get variable called multi_trove_getter and use it in this function to 
+//     get variable called multi_trove_getter and use it in this function to
 //     initialize multi_trove_getter variable in AddressVars struct in IAddressesRegistry.
 //
 // ------interfaces-------
@@ -128,7 +129,5 @@ pub trait IMultiTroveGetter<TContractState> {
 //   ^ create function multi_trove_getter() that returns variable of IMultiTroveGetter type.
 //
 // ================================================================================================================================
-
-
 
 

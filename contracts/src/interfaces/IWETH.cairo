@@ -1,5 +1,3 @@
 use starknet::ContractAddress;
 #[starknet::interface]
-trait IWETH<TContractState>{
-
-}
+trait IWETH<TContractState> {}

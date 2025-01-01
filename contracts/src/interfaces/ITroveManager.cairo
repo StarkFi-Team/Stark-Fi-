@@ -1,5 +1,3 @@
 use starknet::ContractAddress;
 #[starknet::interface]
-trait ITroveManager<TContractState>{
-
-}
+trait ITroveManager<TContractState> {}
