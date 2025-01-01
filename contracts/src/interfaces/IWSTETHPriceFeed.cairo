@@ -1,5 +1,6 @@
-
-use contracts::dependencies::AggregatorV3Interface::{AggregatorV3InterfaceDispatcher,AggregatorV3InterfaceDispatcherTrait};
+use contracts::dependencies::AggregatorV3Interface::{
+    AggregatorV3InterfaceDispatcher, AggregatorV3InterfaceDispatcherTrait
+};
 
 
 #[starknet::interface]
