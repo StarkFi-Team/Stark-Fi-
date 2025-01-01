@@ -12,7 +12,7 @@ trait IWETH<TContractState> {
 //
 // in this interface all functions are external.
 //
-// this trait need to inheirt IERC20Metadata,
+// this trait need to inherit IERC20Metadata,
 // because in cairo interface can't inheirt another interfaces,
 // so we need to inheirt it in impl this interface,
 // and to import it - use openzeppelin::token::erc20::IERC20Metadata;
@@ -24,12 +24,11 @@ trait IWETH<TContractState> {
 // General explanation
 // --------------------------------------------------------------------------------------------------------------------------------
 //
-// explain all functions in the interface.
-//
 //
 //
 // +++++++++ the propuse of this interface: +++++++++
 //
+// enables ETH to be used in ERC20-based protocols without complex changes.
 //
 // --------------------------------------------------------------------------------------------------------------------------------
 //
